@@ -2,13 +2,13 @@
 
 ## Routes:
 
-### Authentication {#auth-endpoint}
+### Authentication
 
 ```typescript
 GET '/psn/auth' => { success: <boolean>, auth: { /* authentication object */ } }
 ```
 
-Returns an object that includes an access token. This ==entire object== is passed into each call to this api as the value for `request.body.auth`. For refreshing a pre-existing auth token, see [refresh auth](#refresh-auth-endpoint)
+Returns an object that includes an access token. This ==entire object== is passed into each call to this api as the value for `request.body.auth`. For refreshing a pre-existing auth token, see [refresh auth](#-Refresh-Auth)
 
 #### Request body object
 
@@ -19,14 +19,14 @@ Returns an object that includes an access token. This ==entire object== is passe
 
 ---
 
-### Refresh Auth {#refresh-auth-endpoint}
+### Refresh Auth
 
 ```typescript
 GET '/psn/refresh-auth' => { success: <boolean>, auth: { /* authentication object */ } }
 ```
 
 Used to refresh an auth token when it has expired. Pass in the expired token's "refreshToken" key found in `auth.refreshToken` into `request.body.refreshToken`.
-Returns an auth object identical to [`/auth`](#auth-endpoint).
+Returns an auth object identical to [/auth](#-Authentication).
 
 #### Request body object
 
@@ -38,14 +38,14 @@ Returns an auth object identical to [`/auth`](#auth-endpoint).
 
 ---
 
-### Get a User's Titles {#titles-endpoint}
+### Get a User's Titles
 
 ```typescript
 GET '/psn/titles' => { success: <boolean>, titles: { /* list of titles */ } }
 ```
 
 Pass in auth object into `request.body.auth` and accountId into `request.body.user`.
-If accountId is unknown, use [profile endpoint](#profile-endpoint) to get this first.
+If accountId is unknown, use [profile endpoint](#-Get-a-User's-profile) to get this first.
 
 #### Request body object
 
@@ -58,7 +58,7 @@ If accountId is unknown, use [profile endpoint](#profile-endpoint) to get this f
 
 ---
 
-### Find a User {#find-user-endpoint}
+### Find a User
 
 ```typescript
 GET '/psn/user' => { success: <boolean>, user: { /* found user object */ } }
@@ -77,7 +77,7 @@ Pass in auth object into `request.body.auth` and ==username== into `request.body
 
 ---
 
-### Get a User's Profile {#profile-endpoint}
+### Get a User's Profile
 
 ```typescript
 GET '/psn/profile' => { success: <boolean>, profile: { /* user's profile object */} }
@@ -96,7 +96,7 @@ Pass in auth object into `request.body.auth` and either an ==accountId== or a ==
 
 ---
 
-### Get a User's Friends List {#friends-list-endpoint}
+### Get a User's Friends List
 
 ```typescript
 GET '/psn/friends-list' => { success: <boolean>, friendsList: { /* friendsList object */ } }

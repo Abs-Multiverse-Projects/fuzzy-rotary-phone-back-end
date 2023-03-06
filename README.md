@@ -8,7 +8,7 @@
 GET '/psn/auth' => { success: <boolean>, auth: { /* authentication object */ } }
 ```
 
-Returns an object that includes an access token. This ==entire object== is passed into each call to this api as the value for `request.body.auth`. For refreshing a pre-existing auth token, see [refresh auth](#-Refresh-Auth)
+Returns an object that includes an access token. This ==entire object== is passed into each call to this api as the value for `request.body.auth`. For refreshing a pre-existing auth token, see [refresh auth](#refresh-auth).
 
 #### Request body object
 
@@ -26,7 +26,7 @@ GET '/psn/refresh-auth' => { success: <boolean>, auth: { /* authentication objec
 ```
 
 Used to refresh an auth token when it has expired. Pass in the expired token's "refreshToken" key found in `auth.refreshToken` into `request.body.refreshToken`.
-Returns an auth object identical to [/auth](#-Authentication).
+Returns an auth object identical to [/auth](#authentication).
 
 #### Request body object
 
@@ -45,7 +45,7 @@ GET '/psn/titles' => { success: <boolean>, titles: { /* list of titles */ } }
 ```
 
 Pass in auth object into `request.body.auth` and accountId into `request.body.user`.
-If accountId is unknown, use [profile endpoint](#-Get-a-User's-profile) to get this first.
+If accountId is unknown, use [profile endpoint](#get-a-users-profile) to get this first.
 
 #### Request body object
 

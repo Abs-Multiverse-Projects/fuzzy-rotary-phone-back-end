@@ -1,5 +1,10 @@
 # Central Gaming Intelligence API
+The backend for my [frontend project](https://github.com/Abs-Multiverse-Projects/fuzzy-rotary-phone). Includes routes for calls to [psn-api](https://psn-api.achievements.app/) while avoiding cors errors.
 
+#### Todo:
+- [x] routes for psn-api – [commit](https://github.com/Abs-Multiverse-Projects/fuzzy-rotary-phone-back-end/commit/28f9af75912ce87331de98e4c068df6b01719efb)
+- [ ] routes for steam api
+- [ ] routes for xbox api
 ## Routes:
 
 ### Authentication

@@ -10,7 +10,7 @@ The backend for my [frontend project](https://github.com/Abs-Multiverse-Projects
 ### Authentication
 
 ```typescript
-GET '/psn/auth' => { success: <boolean>, auth: { /* authentication object */ } }
+PUT '/psn/auth' => { success: <boolean>, auth: { /* authentication object */ } }
 ```
 
 Returns an object that includes an access token. This ==entire object== is passed into each call to this api as the value for `request.body.auth`. For refreshing a pre-existing auth token, see [refresh auth](#refresh-auth).
@@ -27,7 +27,7 @@ Returns an object that includes an access token. This ==entire object== is passe
 ### Refresh Auth
 
 ```typescript
-GET '/psn/refresh-auth' => { success: <boolean>, auth: { /* authentication object */ } }
+POST '/psn/refresh-auth' => { success: <boolean>, auth: { /* authentication object */ } }
 ```
 
 Used to refresh an auth token when it has expired. Pass in the expired token's "refreshToken" key found in `auth.refreshToken` into `request.body.refreshToken`.
@@ -46,7 +46,7 @@ Returns an auth object identical to [/auth](#authentication).
 ### Get a User's Titles
 
 ```typescript
-GET '/psn/titles' => { success: <boolean>, titles: { /* list of titles */ } }
+POST '/psn/titles' => { success: <boolean>, titles: { /* list of titles */ } }
 ```
 
 Pass in auth object into `request.body.auth` and accountId into `request.body.user`.
@@ -66,7 +66,7 @@ If accountId is unknown, use [profile endpoint](#get-a-users-profile) to get thi
 ### Find a User
 
 ```typescript
-GET '/psn/user' => { success: <boolean>, user: { /* found user object */ } }
+POST '/psn/user' => { success: <boolean>, user: { /* found user object */ } }
 ```
 
 Pass in auth object into `request.body.auth` and ==username== into `request.body.user`. If no username is passed in, the signed in user's information is returned (based on .env files NPSSO key).
@@ -85,7 +85,7 @@ Pass in auth object into `request.body.auth` and ==username== into `request.body
 ### Get a User's Profile
 
 ```typescript
-GET '/psn/profile' => { success: <boolean>, profile: { /* user's profile object */} }
+POST '/psn/profile' => { success: <boolean>, profile: { /* user's profile object */} }
 ```
 
 Pass in auth object into `request.body.auth` and either an ==accountId== or a ==username== into `request.body.user`. Return's a user's profile information.
@@ -104,7 +104,7 @@ Pass in auth object into `request.body.auth` and either an ==accountId== or a ==
 ### Get a User's Friends List
 
 ```typescript
-GET '/psn/friends-list' => { success: <boolean>, friendsList: { /* friendsList object */ } }
+POST '/psn/friends-list' => { success: <boolean>, friendsList: { /* friendsList object */ } }
 ```
 
 Pass in auth object into `request.body.auth` and and ==accountId== into `request.body.user`. If that user has their friends list set to private, this will return an error.

@@ -25,7 +25,7 @@ const psnRouter: Router = Router();
 psnRouter.put("/auth", async (req: Request, res: Response) => {
 	try {
 		const code: string = await exchangeNpssoForCode(process.env.NPSSO!);
-		const authorization = await exchangeCodeForAccessToken(code);
+		const authorization: Auth = await exchangeCodeForAccessToken(code);
 		res.send({ success: true, auth: authorization });
 	} catch (error) {
 		res.send({ success: false, error });
@@ -41,14 +41,14 @@ psnRouter.post("/refresh-auth", async (req: Request, res: Response) => {
 		);
 		res.send({ success: true, auth: newAuthToken });
 	} catch (error) {
-		res.send({ success: false, error });
+		res.status(403).send({ success: false, error });
 	}
 });
 
 // pass in auth object (returned from '/auth') in req.body.auth
 // can pass in accountId to get titles of that specific account (get accountId from '/profile' passing in a username)
 psnRouter.post("/titles", async (req: Request, res: Response) => {
-	const auth: Auth = req.body.auth;
+	const auth: Auth = JSON.parse(req.body.auth);
 	try {
 		if (req.body.user) {
 			const titles: UserTitlesResponse = await getUserTitles(

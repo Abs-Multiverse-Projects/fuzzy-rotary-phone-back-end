@@ -49,7 +49,7 @@ Returns an auth object identical to [/auth](#authentication).
 POST '/psn/titles' => { success: <boolean>, titles: { /* list of titles */ } }
 ```
 
-Pass in auth object into `request.body.auth` and accountId into `request.body.user`.
+Pass in auth object into `request.body.auth` and ==accountId== into `request.body.user`.
 If accountId is unknown, use [profile endpoint](#get-a-users-profile) to get this first.
 
 #### Request body object
@@ -107,7 +107,7 @@ Pass in auth object into `request.body.auth` and either an ==accountId== or a ==
 POST '/psn/friends-list' => { success: <boolean>, friendsList: { /* friendsList object */ } }
 ```
 
-Pass in auth object into `request.body.auth` and and ==accountId== into `request.body.user`. If that user has their friends list set to private, this will return an error.
+Pass in auth object into `request.body.auth` and ==accountId== into `request.body.user`. If that user has their friends list set to private, this will return an error.
 
 #### Request body object
 

@@ -48,7 +48,7 @@ psnRouter.post("/refresh-auth", async (req: Request, res: Response) => {
 // pass in auth object (returned from '/auth') in req.body.auth
 // can pass in accountId to get titles of that specific account (get accountId from '/profile' passing in a username)
 psnRouter.post("/titles", async (req: Request, res: Response) => {
-	const auth: Auth = JSON.parse(req.body.auth);
+	const auth: Auth = req.body.auth;
 	try {
 		if (req.body.user) {
 			const titles: UserTitlesResponse = await getUserTitles(
@@ -56,6 +56,7 @@ psnRouter.post("/titles", async (req: Request, res: Response) => {
 				req.body.user
 			);
 			res.send({ success: true, titles });
+			return;
 		}
 		const titles: UserTitlesResponse = await getUserTitles(auth, "me");
 		res.send({ success: true, titles });

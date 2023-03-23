@@ -16,7 +16,7 @@ import {
 	getUserFriendsAccountIds,
 	GetUserFriendsAccountIdsResponse,
 } from "psn-api";
-import { Auth } from "../../types";
+import { Auth } from "../../types/psn";
 
 dotenv.config();
 
